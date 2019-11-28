@@ -130,8 +130,25 @@ function Start-UAApp([switch] $Cache) {
     }
 }
 
+function Reinstall-NodeModules(){
+Remove-Item -Recurse .\node_modules\;
+npm install;
+}
+
+function RemoveApp-Build (){
+	Remove-Item -Recurse "C:\user-app\freetrailer\android\app\build\";
+}
+
+function View-Profile {
+	Get-Content "C:\Windows\System32\WindowsPowerShell\v1.0\profile.ps1"
+}
+
 function View-KioskGUID(){
 code "C:\Users\Daniel Hollmann\Documents\Development\Source\ftg-api\ftg.api\modules\kioskGuids.js"
+}
+
+function Get-KioskGUI ($Location) {
+    Select-String -Path  "C:\Users\Daniel Hollmann\Documents\Development\Source\ftg-api\ftg.api\modules\kioskGuids.js" -Pattern $location -SimpleMatch 
 }
 
 function Edit-Profile {
@@ -140,4 +157,16 @@ function Edit-Profile {
 
 function Edit-Hosts {
     Start-Process -Verb "runAs" notepad++.exe "C:\Windows\System32\drivers\etc\hosts"
+}
+
+function Copy-StoryJira {
+	Get-Content "C:\Users\Daniel Hollmann\jiraStory.txt" | Set-Clipboard
+}
+
+function Copy-BugJira {
+	Get-Content "C:\Users\Daniel Hollmann\jiraBug.txt" | Set-Clipboard
+}
+
+function Copy-GitBranch {
+git rev-parse --abbrev-ref HEAD | Set-Clipboard
 }
