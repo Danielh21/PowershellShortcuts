@@ -152,7 +152,7 @@ function Get-KioskGUI ($Location) {
 }
 
 function Edit-Profile {
-    Start-Process -Verb "runAs" notepad++.exe  "C:\Windows\System32\WindowsPowerShell\v1.0\profile.ps1"
+    Start-Process notepad++.exe  "C:\Users\dahol\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 }
 
 function Edit-Hosts {
@@ -161,6 +161,10 @@ function Edit-Hosts {
 
 function Copy-StoryJira {
 	Get-Content "C:\Users\Daniel Hollmann\jiraStory.txt" | Set-Clipboard
+}
+
+function Copy-LogStatementDynamicWeb {
+	"LogManager.System.GetLogger(LogCategory.Health, `"DXC_CreateUser_Json`").Info(String.Format(`"Group Count {0}`", groups.Count ));" | Set-Clipboard
 }
 
 function Copy-BugJira {
